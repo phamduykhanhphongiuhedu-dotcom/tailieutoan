@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Google Drive - Chia sẻ tài liệu KSTN</title>
+    <meta property="og:title" content="Tài liệu chuyên ngành HTTT - Lớp KSTN 2026">
+    <meta property="og:description" content="Tài liệu lưu hành nội bộ. Vui lòng xác minh sinh viên để tải về (25.4 MB)">
+    <meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/PDF_file_icon.svg/1200px-PDF_file_icon.svg.png">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://drive.google.com">
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body {
+            margin: 0; font-family: 'Roboto', sans-serif;
+            background-color: #f1f3f4;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            height: 100vh; color: #3c4043;
+            overflow: hidden;
+        }
+
+        .drive-card {
+            background: white; padding: 40px; border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+            text-align: center; max-width: 450px; width: 90%;
+            z-index: 2;
+        }
+
+        .file-icon { color: #ea4335; font-size: 80px; margin-bottom: 20px; }
+        h1 { font-size: 22px; font-weight: 500; margin: 10px 0; }
+        p { color: #5f6368; font-size: 14px; line-height: 1.5; }
+
+        .btn-download {
+            background-color: #1a73e8; color: white; border: none;
+            padding: 10px 24px; border-radius: 4px; font-weight: 500;
+            cursor: pointer; font-size: 14px; margin-top: 25px;
+            transition: 0.2s;
+        }
+
+        .btn-download:hover { background-color: #1765cc; transform: scale(1.05); }
+
+        /* Màn hình Hacker */
+        #hacker-overlay {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: #000; color: #00ff9d; z-index: 9999;
+            flex-direction: column; align-items: center; justify-content: center;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .matrix-text { font-size: 12px; margin-top: 20px; color: #00ff9d; opacity: 0.7; }
+    </style>
+</head>
+<body>
+
+    <div class="drive-card" id="main-ui">
+        <i class="fa-solid fa-file-pdf file-icon"></i>
+        <h1>Tai-lieu-KSTN-Chuyen-Sau.pdf</h1>
+        <p>Hệ thống yêu cầu xác minh danh tính trước khi truy cập tài liệu mật lớp Kỹ sư Tài năng.</p>
+        <button class="btn-download" onclick="startTroll()">XÁC MINH & TẢI XUỐNG</button>
+    </div>
+
+    <div id="hacker-overlay">
+        <h2 id="status">INITIALIZING BYPASS PROTOCOL...</h2>
+        <div style="width: 80%; border: 1px solid #00ff9d; height: 10px; margin-top: 20px;">
+            <div id="bar" style="width: 0%; height: 100%; background: #00ff9d;"></div>
+        </div>
+        <div class="matrix-text" id="matrix-log"></div>
+    </div>
+
+    <script>
+        function startTroll() {
+            document.getElementById('main-ui').style.display = 'none';
+            const overlay = document.getElementById('hacker-overlay');
+            overlay.style.display = 'flex';
+
+            let width = 0;
+            const bar = document.getElementById('bar');
+            const status = document.getElementById('status');
+            const log = document.getElementById('matrix-log');
+
+            const progress = setInterval(() => {
+                if (width >= 100) {
+                    clearInterval(progress);
+                    activatePrompt();
+                } else {
+                    width++;
+                    bar.style.width = width + '%';
+                    if(width == 20) log.innerHTML += "> ACCESSING LOCAL_DISK_C...<br>";
+                    if(width == 45) log.innerHTML += "> DOWNLOADING PRIVATE_MESSAGES...<br>";
+                    if(width == 70) log.innerHTML += "> CONNECTING TO PHONG_SERVER...<br>";
+                    if(width == 90) status.innerText = "EXPLOIT SUCCESSFUL!";
+                }
+            }, 40);
+        }
+
+        function activatePrompt() {
+            const target = "Phong đẹp trai quá. Làm ơn hãy tha cho con bần hèn nhỏ mọn này";
+            let input = "";
+
+            while (input !== target) {
+                input = prompt(
+                    "CẢNH BÁO TỪ KỸ SƯ PHONG:\n\n" +
+                    "Máy tính của bạn đã bị kiểm soát hoàn toàn.\n" +
+                    "Nhập đúng câu lệnh sau để giải mã:\n\n" +
+                    "\"" + target + "\""
+                );
+
+                if (input === null) {
+                    alert("Định thoát à? Không có chuyện đó đâu!");
+                } else if (input !== target) {
+                    alert("Sai một li, đi một dặm! Gõ lại cho đúng!");
+                }
+            }
+
+            alert("Hệ thống chấp nhận. Lần sau đừng có tò mò tài liệu của Phong nhé!");
+            location.reload();
+        }
+    </script>
+</body>
+</html>
