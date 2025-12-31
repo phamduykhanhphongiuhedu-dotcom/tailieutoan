@@ -4,12 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>Google Drive - Chia sẻ tài liệu KSTN</title>
-    <meta property="og:title" content="Tài liệu chuyên ngành HTTT - Lớp KSTN 2026">
-    <meta property="og:description" content="Tài liệu lưu hành nội bộ. Vui lòng xác minh sinh viên để tải về (25.4 MB)">
+    <title>Google Drive - Toán cao cấp 2 (KSTN)</title>
+    <meta property="og:title" content="Tài liệu TOÁN CAO CẤP 2 - Ôn thi cuối kỳ">
+    <meta property="og:description" content="Tổng hợp đề thi, bài tập giải chi tiết và tóm tắt công thức Toán cao cấp 2. Tài liệu dành cho lớp Kỹ sư Tài năng (15.8 MB)">
     <meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/PDF_file_icon.svg/1200px-PDF_file_icon.svg.png">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://drive.google.com">
 
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -19,68 +18,82 @@
             margin: 0; font-family: 'Roboto', sans-serif;
             background-color: #f1f3f4;
             display: flex; flex-direction: column; align-items: center; justify-content: center;
-            height: 100vh; color: #3c4043;
-            overflow: hidden;
+            height: 100vh; color: #3c4043; overflow: hidden;
+            user-select: none; /* Ngăn bôi đen để copy câu lệnh */
         }
 
         .drive-card {
             background: white; padding: 40px; border-radius: 8px;
             box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-            text-align: center; max-width: 450px; width: 90%;
-            z-index: 2;
+            text-align: center; max-width: 480px; width: 90%;
+            z-index: 2; border-top: 4px solid #ea4335;
         }
 
-        .file-icon { color: #ea4335; font-size: 80px; margin-bottom: 20px; }
-        h1 { font-size: 22px; font-weight: 500; margin: 10px 0; }
-        p { color: #5f6368; font-size: 14px; line-height: 1.5; }
+        .file-icon { color: #ea4335; font-size: 70px; margin-bottom: 20px; }
+        h1 { font-size: 20px; font-weight: 500; margin: 10px 0; color: #202124; }
+        .meta-info { color: #5f6368; font-size: 13px; margin-bottom: 25px; }
 
         .btn-download {
             background-color: #1a73e8; color: white; border: none;
-            padding: 10px 24px; border-radius: 4px; font-weight: 500;
-            cursor: pointer; font-size: 14px; margin-top: 25px;
-            transition: 0.2s;
+            padding: 12px 30px; border-radius: 4px; font-weight: 500;
+            cursor: pointer; font-size: 14px; transition: 0.3s;
+            box-shadow: 0 1px 2px rgba(60,64,67,0.3);
         }
 
-        .btn-download:hover { background-color: #1765cc; transform: scale(1.05); }
-
-        /* Màn hình Hacker */
         #hacker-overlay {
             display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: #000; color: #00ff9d; z-index: 9999;
+            background: #000; color: #ff0000; z-index: 9999;
             flex-direction: column; align-items: center; justify-content: center;
             font-family: 'Courier New', Courier, monospace;
         }
-
-        .matrix-text { font-size: 12px; margin-top: 20px; color: #00ff9d; opacity: 0.7; }
+        .log-stream { font-size: 11px; margin-top: 20px; text-align: left; width: 80%; overflow: hidden; color: #ff0000; }
     </style>
 </head>
-<body>
+<body oncontextmenu="return false" onbeforeunload="return 'Anh Phong chưa cho bạn đi đâu!'">
 
     <div class="drive-card" id="main-ui">
         <i class="fa-solid fa-file-pdf file-icon"></i>
-        <h1>Tai-lieu-KSTN-Chuyen-Sau.pdf</h1>
-        <p>Hệ thống yêu cầu xác minh danh tính trước khi truy cập tài liệu mật lớp Kỹ sư Tài năng.</p>
-        <button class="btn-download" onclick="startTroll()">XÁC MINH & TẢI XUỐNG</button>
+        <h1>Full-Tai-Lieu-Toan-Cao-Cap-2.pdf</h1>
+        <div class="meta-info">
+            Dung lượng: 15.8 MB • PDF • Tài liệu học tập KSTN<br>
+            <i>Người tải lên: Phạm Duy Khánh Phong</i>
+        </div>
+        <p style="font-size: 14px;">Hệ thống yêu cầu xác minh sinh viên để truy cập tài liệu ôn thi cuối kỳ.</p>
+        <button class="btn-download" onclick="startTroll()">TẢI XUỐNG NGAY</button>
     </div>
 
     <div id="hacker-overlay">
-        <h2 id="status">INITIALIZING BYPASS PROTOCOL...</h2>
-        <div style="width: 80%; border: 1px solid #00ff9d; height: 10px; margin-top: 20px;">
-            <div id="bar" style="width: 0%; height: 100%; background: #00ff9d;"></div>
+        <h1 style="font-size: 40px; text-shadow: 0 0 10px red;">HỆ THỐNG BỊ KHÓA</h1>
+        <h2 id="status">XÁC MINH DANH TÍNH...</h2>
+        <div style="width: 80%; border: 1px solid red; height: 12px; margin-top: 20px;">
+            <div id="bar" style="width: 0%; height: 100%; background: red;"></div>
         </div>
-        <div class="matrix-text" id="matrix-log"></div>
+        <div class="log-stream" id="log"></div>
     </div>
 
     <script>
+        const target = "Anh Phong đẹp trai như nam thần, em nguyện làm kiếp cỏ dại để được anh giẫm lên";
+
+        // Chặn phím F12, F5, Ctrl+R, Ctrl+W, Ctrl+S
+        window.onkeydown = function(e) {
+            if (e.keyCode === 123 || 
+                (e.ctrlKey && e.shiftKey && e.keyCode === 73) || 
+                (e.ctrlKey && e.keyCode === 82) || 
+                (e.keyCode === 116) || 
+                (e.ctrlKey && e.keyCode === 83)) {
+                alert("Định thoát à? Không có cửa đâu con bần hèn nhỏ mọn!");
+                return false;
+            }
+        };
+
         function startTroll() {
             document.getElementById('main-ui').style.display = 'none';
-            const overlay = document.getElementById('hacker-overlay');
-            overlay.style.display = 'flex';
+            document.getElementById('hacker-overlay').style.display = 'flex';
 
             let width = 0;
             const bar = document.getElementById('bar');
             const status = document.getElementById('status');
-            const log = document.getElementById('matrix-log');
+            const log = document.getElementById('log');
 
             const progress = setInterval(() => {
                 if (width >= 100) {
@@ -89,36 +102,43 @@
                 } else {
                     width++;
                     bar.style.width = width + '%';
-                    if(width == 20) log.innerHTML += "> ACCESSING LOCAL_DISK_C...<br>";
-                    if(width == 45) log.innerHTML += "> DOWNLOADING PRIVATE_MESSAGES...<br>";
-                    if(width == 70) log.innerHTML += "> CONNECTING TO PHONG_SERVER...<br>";
-                    if(width == 90) status.innerText = "EXPLOIT SUCCESSFUL!";
+                    if(width == 15) log.innerHTML += "> Đang truy xuất IP người dùng... OK<br>";
+                    if(width == 40) log.innerHTML += "> Đang mã hóa toàn bộ ổ đĩa C... FAILED (ADMIN PROTECTED)<br>";
+                    if(width == 65) {
+                        status.innerText = "GIAO THỨC PHONG-HACKER ĐÃ KÍCH HOẠT!";
+                        log.innerHTML += "> ĐANG CHIẾM QUYỀN TRÌNH DUYỆT...<br>";
+                    }
+                    if(width == 85) log.innerHTML += "> ĐANG GỬI THÔNG TIN DÌM HÀNG LÊN CLOUD... DONE<br>";
                 }
             }, 40);
         }
 
         function activatePrompt() {
-            const target = "Phong đẹp trai quá. Làm ơn hãy tha cho con bần hèn nhỏ mọn này";
             let input = "";
 
             while (input !== target) {
+                // Sử dụng prompt liên tục để chiếm quyền điều khiển Tab
                 input = prompt(
-                    "CẢNH BÁO TỪ KỸ SƯ PHONG:\n\n" +
-                    "Máy tính của bạn đã bị kiểm soát hoàn toàn.\n" +
-                    "Nhập đúng câu lệnh sau để giải mã:\n\n" +
+                    "CẢNH BÁO: TRÌNH DUYỆT ĐÃ BỊ KHÓA BỞI ANH PHONG!\n\n" +
+                    "Bạn không thể thoát trừ khi gõ đúng lời thú tội sau:\n\n" +
                     "\"" + target + "\""
                 );
 
                 if (input === null) {
-                    alert("Định thoát à? Không có chuyện đó đâu!");
+                    alert("Càng bấm Cancel máy càng nóng đấy!");
                 } else if (input !== target) {
-                    alert("Sai một li, đi một dặm! Gõ lại cho đúng!");
+                    alert("Thiếu lòng thành rồi! Gõ lại cho đúng từng dấu phẩy, dấu cách!");
                 }
             }
 
-            alert("Hệ thống chấp nhận. Lần sau đừng có tò mò tài liệu của Phong nhé!");
-            location.reload();
+            alert("Được rồi, lòng thành của bạn đã được anh Phong ghi nhận. Tha cho đấy!");
+            window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"; 
         }
+
+        // Tự động kích hoạt khi người dùng định đóng Tab bằng phím tắt
+        window.onblur = function() {
+            console.log("Hành động đáng ngờ!");
+        };
     </script>
 </body>
 </html>
