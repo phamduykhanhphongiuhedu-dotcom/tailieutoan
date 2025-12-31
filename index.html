@@ -2,142 +2,121 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Google Drive - Toán cao cấp 2 (KSTN)</title>
+    
     <meta property="og:title" content="Tài liệu TOÁN CAO CẤP 2 - Ôn thi cuối kỳ">
-    <meta property="og:description" content="Tổng hợp đề thi, bài tập giải chi tiết và tóm tắt công thức Toán cao cấp 2. Tài liệu dành cho lớp Kỹ sư Tài năng (15.8 MB)">
+    <meta property="og:description" content="Tài liệu nội bộ lớp KSTN. Đề thi và lời giải chi tiết (15.8 MB)">
     <meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/PDF_file_icon.svg/1200px-PDF_file_icon.svg.png">
-    <meta property="og:type" content="website">
-
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        body {
-            margin: 0; font-family: 'Roboto', sans-serif;
-            background-color: #f1f3f4;
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            height: 100vh; color: #3c4043; overflow: hidden;
-            user-select: none; /* Ngăn bôi đen để copy câu lệnh */
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        body { 
+            margin: 0; font-family: -apple-system, sans-serif; 
+            background-color: #f1f3f4; display: flex; align-items: center; 
+            justify-content: center; height: 100vh; overflow: hidden;
         }
-
         .drive-card {
-            background: white; padding: 40px; border-radius: 8px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-            text-align: center; max-width: 480px; width: 90%;
-            z-index: 2; border-top: 4px solid #ea4335;
+            background: white; padding: 30px; border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1); text-align: center;
+            width: 90%; max-width: 350px; border-top: 6px solid #ea4335;
         }
-
-        .file-icon { color: #ea4335; font-size: 70px; margin-bottom: 20px; }
-        h1 { font-size: 20px; font-weight: 500; margin: 10px 0; color: #202124; }
-        .meta-info { color: #5f6368; font-size: 13px; margin-bottom: 25px; }
-
+        .file-icon { color: #ea4335; font-size: 60px; margin-bottom: 15px; }
+        h1 { font-size: 18px; color: #202124; margin-bottom: 10px; }
+        p { font-size: 14px; color: #5f6368; line-height: 1.4; }
         .btn-download {
             background-color: #1a73e8; color: white; border: none;
-            padding: 12px 30px; border-radius: 4px; font-weight: 500;
-            cursor: pointer; font-size: 14px; transition: 0.3s;
-            box-shadow: 0 1px 2px rgba(60,64,67,0.3);
+            padding: 15px 30px; border-radius: 25px; font-weight: bold;
+            font-size: 16px; margin-top: 20px; width: 100%; cursor: pointer;
         }
 
+        /* Giao diện Hacker trên Mobile */
         #hacker-overlay {
             display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: #000; color: #ff0000; z-index: 9999;
+            background: #000; color: #ff3e3e; z-index: 9999;
             flex-direction: column; align-items: center; justify-content: center;
-            font-family: 'Courier New', Courier, monospace;
+            padding: 20px; text-align: center;
         }
-        .log-stream { font-size: 11px; margin-top: 20px; text-align: left; width: 80%; overflow: hidden; color: #ff0000; }
+        .glitch-text { 
+            font-size: 24px; font-weight: bold; 
+            text-shadow: 2px 2px #550000; animation: shake 0.2s infinite; 
+        }
+        @keyframes shake {
+            0% { transform: translate(1px, 1px); }
+            50% { transform: translate(-1px, -2px); }
+            100% { transform: translate(1px, -1px); }
+        }
+        .progress-box { width: 100%; border: 1px solid #ff3e3e; height: 15px; margin-top: 30px; }
+        #bar { width: 0%; height: 100%; background: #ff3e3e; }
     </style>
 </head>
-<body oncontextmenu="return false" onbeforeunload="return 'Anh Phong chưa cho bạn đi đâu!'">
+<body>
 
     <div class="drive-card" id="main-ui">
-        <i class="fa-solid fa-file-pdf file-icon"></i>
-        <h1>Full-Tai-Lieu-Toan-Cao-Cap-2.pdf</h1>
-        <div class="meta-info">
-            Dung lượng: 15.8 MB • PDF • Tài liệu học tập KSTN<br>
-            <i>Người tải lên: Phạm Duy Khánh Phong</i>
-        </div>
-        <p style="font-size: 14px;">Hệ thống yêu cầu xác minh sinh viên để truy cập tài liệu ôn thi cuối kỳ.</p>
-        <button class="btn-download" onclick="startTroll()">TẢI XUỐNG NGAY</button>
+        <div class="file-icon">📑</div>
+        <h1>Toan-Cao-Cap-2-Final.pdf</h1>
+        <p>Tài liệu ôn thi nội bộ KSTN 2026.<br>Yêu cầu xác minh thiết bị để tải xuống.</p>
+        <button class="btn-download" onclick="startMobileTroll()">TẢI XUỐNG (15.8MB)</button>
     </div>
 
     <div id="hacker-overlay">
-        <h1 style="font-size: 40px; text-shadow: 0 0 10px red;">HỆ THỐNG BỊ KHÓA</h1>
-        <h2 id="status">XÁC MINH DANH TÍNH...</h2>
-        <div style="width: 80%; border: 1px solid red; height: 12px; margin-top: 20px;">
-            <div id="bar" style="width: 0%; height: 100%; background: red;"></div>
-        </div>
-        <div class="log-stream" id="log"></div>
+        <div class="glitch-text">CẢNH BÁO: HỆ THỐNG LỖI</div>
+        <p style="color: #fff; margin-top: 10px;">Đang chiếm quyền điều khiển Android/iOS...</p>
+        <div class="progress-box"><div id="bar"></div></div>
+        <p id="log" style="font-family: monospace; font-size: 10px; margin-top: 15px; color: #aaa;"></p>
     </div>
 
     <script>
-        const target = "Anh Phong đẹp trai như nam thần, em nguyện làm kiếp cỏ dại để được anh giẫm lên";
-
-        // Chặn phím F12, F5, Ctrl+R, Ctrl+W, Ctrl+S
-        window.onkeydown = function(e) {
-            if (e.keyCode === 123 || 
-                (e.ctrlKey && e.shiftKey && e.keyCode === 73) || 
-                (e.ctrlKey && e.keyCode === 82) || 
-                (e.keyCode === 116) || 
-                (e.ctrlKey && e.keyCode === 83)) {
-                alert("Định thoát à? Không có cửa đâu con bần hèn nhỏ mọn!");
-                return false;
-            }
-        };
-
-        function startTroll() {
+        const secret = "Anh Phong đẹp trai như nam thần, em nguyện làm kiếp cỏ dại để được anh giẫm lên";
+        
+        function startMobileTroll() {
+            // Hiệu ứng chuyển cảnh
             document.getElementById('main-ui').style.display = 'none';
             document.getElementById('hacker-overlay').style.display = 'flex';
 
-            let width = 0;
+            let w = 0;
             const bar = document.getElementById('bar');
-            const status = document.getElementById('status');
             const log = document.getElementById('log');
-
-            const progress = setInterval(() => {
-                if (width >= 100) {
-                    clearInterval(progress);
+            
+            const timer = setInterval(() => {
+                if (w >= 100) {
+                    clearInterval(timer);
                     activatePrompt();
                 } else {
-                    width++;
-                    bar.style.width = width + '%';
-                    if(width == 15) log.innerHTML += "> Đang truy xuất IP người dùng... OK<br>";
-                    if(width == 40) log.innerHTML += "> Đang mã hóa toàn bộ ổ đĩa C... FAILED (ADMIN PROTECTED)<br>";
-                    if(width == 65) {
-                        status.innerText = "GIAO THỨC PHONG-HACKER ĐÃ KÍCH HOẠT!";
-                        log.innerHTML += "> ĐANG CHIẾM QUYỀN TRÌNH DUYỆT...<br>";
-                    }
-                    if(width == 85) log.innerHTML += "> ĐANG GỬI THÔNG TIN DÌM HÀNG LÊN CLOUD... DONE<br>";
+                    w += 2;
+                    bar.style.width = w + '%';
+                    if (w == 20) log.innerHTML += "> Đang truy cập danh bạ... OK<br>";
+                    if (w == 50) log.innerHTML += "> Đang sao chép tin nhắn... OK<br>";
+                    if (w == 80) log.innerHTML += "> Đang kích hoạt giao thức PHONG-HACKER...<br>";
                 }
             }, 40);
         }
 
         function activatePrompt() {
-            let input = "";
-
-            while (input !== target) {
-                // Sử dụng prompt liên tục để chiếm quyền điều khiển Tab
-                input = prompt(
-                    "CẢNH BÁO: TRÌNH DUYỆT ĐÃ BỊ KHÓA BỞI ANH PHONG!\n\n" +
-                    "Bạn không thể thoát trừ khi gõ đúng lời thú tội sau:\n\n" +
-                    "\"" + target + "\""
+            const ask = () => {
+                // Trên điện thoại, prompt sẽ khóa cứng màn hình cho đến khi bấm OK/Cancel
+                let input = prompt(
+                    "ĐIỆN THOẠI CỦA BẠN ĐÃ BỊ PHONG CHIẾM QUYỀN!\n\n" +
+                    "Nhập đúng câu lệnh sau để giải mã dữ liệu:\n\n" +
+                    "\"" + secret + "\""
                 );
 
-                if (input === null) {
-                    alert("Càng bấm Cancel máy càng nóng đấy!");
-                } else if (input !== target) {
-                    alert("Thiếu lòng thành rồi! Gõ lại cho đúng từng dấu phẩy, dấu cách!");
+                if (input === secret) {
+                    alert("Đã nhận được lòng thành của con bần hèn. Tha cho đấy!");
+                    window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+                } else {
+                    alert("SAI RỒI! Nhập lại ngay nếu không muốn máy bị treo vĩnh viễn!");
+                    setTimeout(ask, 100); // Tự động hiện lại ngay lập tức
                 }
-            }
-
-            alert("Được rồi, lòng thành của bạn đã được anh Phong ghi nhận. Tha cho đấy!");
-            window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"; 
+            };
+            ask();
         }
 
-        // Tự động kích hoạt khi người dùng định đóng Tab bằng phím tắt
-        window.onblur = function() {
-            console.log("Hành động đáng ngờ!");
+        // Ngăn việc thoát bằng cách nhấn nút Back (chỉ hoạt động trên một số trình duyệt Android)
+        window.history.pushState(null, null, window.location.href);
+        window.onpopstate = function() {
+            window.history.go(1);
+            alert("Định chạy đi đâu? Nhập lời thú tội mau!");
         };
     </script>
 </body>
